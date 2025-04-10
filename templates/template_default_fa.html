@@ -1,0 +1,113 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    html {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: center;
+    }
+
+    body {
+      font-family: IRANSansX;
+      padding: 40px;
+      direction: rtl;
+      background-color: #fff;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 0;
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 16px;
+      color: #777;
+    }
+
+    section {
+      margin-top: 30px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>{{personalInfo.fullName}}</h1>
+  <h2>{{personalInfo.jobTitle}}</h2>
+
+  {{#if personalInfo.summary}}
+  <section>
+    <h3>خلاصه</h3>
+    <p>{{personalInfo.summary}}</p>
+  </section>
+  {{/if}}
+
+  <section>
+    <h3>اطلاعات تماس</h3>
+    <ul>
+      <li>ایمیل: {{personalInfo.email}}</li>
+      <li>تلفن: {{personalInfo.phone}}</li>
+      <li>مکان: {{personalInfo.location}}</li>
+    </ul>
+    {{#if personalInfo.avatar}}
+    <img src="{{personalInfo.avatar}}" alt="Avatar" width="100" />
+    {{/if}}
+    {{#if personalInfo.socials.length}}
+    <h4>لینک‌های اجتماعی</h4>
+    <ul>
+      {{#each personalInfo.socials}}
+      <li>{{platform}}: <a href="{{url}}">{{url}}</a></li>
+      {{/each}}
+    </ul>
+    {{/if}}
+  </section>
+
+  {{#if skills.length}}
+  <section>
+    <h3>مهارت‌ها</h3>
+    <ul>
+      {{#each skills}}
+      <li>{{name}} - {{level}}%</li>
+      {{/each}}
+    </ul>
+  </section>
+  {{/if}}
+
+  {{#if experience.length}}
+  <section>
+    <h3>تجربه کاری</h3>
+    <ul>
+      {{#each experience}}
+      <li>
+        <strong>{{role}}</strong> در {{company}}
+        (از {{startDate}} تا {{endDate}} - به مدت {{duration}})
+      </li>
+      {{/each}}
+    </ul>
+  </section>
+  {{/if}}
+
+  {{#if projects.length}}
+  <section>
+    <h3>پروژه‌ها</h3>
+    <ul>
+      {{#each projects}}
+      <li>
+        <strong>{{title}}</strong><br />
+        {{description}}<br />
+        <em>تکنولوژی‌ها:</em> {{#each technologies}}<span>{{this}}{{#unless @last}}, {{/unless}}</span>{{/each}}
+      </li>
+      {{/each}}
+    </ul>
+  </section>
+  {{/if}}
+</body>
+
+</html>

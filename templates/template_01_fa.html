@@ -1,0 +1,151 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    html {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: center;
+    }
+
+    @page {
+      size: A4;
+      margin: 10mm;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .a4-container {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0;
+      background: white;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    @font-face {
+      font-family: 'IRANSansX';
+      font-style: normal;
+      font-weight: 400;
+      src: url('https://fonts.cdnfonts.com/s/61729/IRANSansXRegular.woff') format('woff');
+    }
+
+    @font-face {
+      font-family: 'IRANSansX';
+      font-style: normal;
+      font-weight: 100;
+      src: url('https://fonts.cdnfonts.com/s/61729/IRANSansXThin.woff') format('woff');
+    }
+
+    @font-face {
+      font-family: 'IRANSansX';
+      font-style: normal;
+      font-weight: 200;
+      src: url('https://fonts.cdnfonts.com/s/61729/IRANSansXUltraLight.woff') format('woff');
+    }
+
+    @font-face {
+      font-family: 'IRANSansX';
+      font-style: normal;
+      font-weight: 300;
+      src: url('https://fonts.cdnfonts.com/s/61729/IRANSansXLight.woff') format('woff');
+    }
+
+    @font-face {
+      font-family: 'IRANSansX';
+      font-style: normal;
+      font-weight: 500;
+      src: url('https://fonts.cdnfonts.com/s/61729/IRANSansXMedium.woff') format('woff');
+    }
+
+    @font-face {
+      font-family: 'IRANSansX';
+      font-style: normal;
+      font-weight: 600;
+      src: url('https://fonts.cdnfonts.com/s/61729/IRANSansXDemiBold.woff') format('woff');
+    }
+
+    @font-face {
+      font-family: 'IRANSansX';
+      font-style: normal;
+      font-weight: 700;
+      src: url('https://fonts.cdnfonts.com/s/61729/IRANSansXBold.woff') format('woff');
+    }
+
+    @font-face {
+      font-family: 'IRANSansX';
+      font-style: normal;
+      font-weight: 800;
+      src: url('https://fonts.cdnfonts.com/s/61729/IRANSansXExtraBold.woff') format('woff');
+    }
+
+    @font-face {
+      font-family: 'IRANSansX';
+      font-style: normal;
+      font-weight: 900;
+      src: url('https://fonts.cdnfonts.com/s/61729/IRANSansXBlack.woff') format('woff');
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="a4-container" style="font-family: 'IRANSansX'; border: 1px solid #ccc; box-shadow: 0 0 10px #eee;"
+    dir="rtl">
+    <div style="display: flex; background: #f8f8f8; padding: 20px;">
+      <div style="flex: 0 0 120px; text-align: center;">
+        {{#if personalInfo.avatar}}
+        <img src="{{personalInfo.avatar}}" alt="Avatar"
+          style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;" />
+        {{else}}
+        <img src="https://via.placeholder.com/100?text=Avatar" alt="Avatar"
+          style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;" />
+        {{/if}}
+      </div>
+      <div style="flex: 1; padding-left: 20px; text-align: right;">
+        <h1 style="margin: 0;">{{personalInfo.fullName}}</h1>
+        <h3 style="margin-top: 5px; color: #555;">{{personalInfo.jobTitle}}</h3>
+        <p style="margin-top: 10px;">
+          {{personalInfo.email}}<br />
+          {{personalInfo.phone}}<br />
+          {{personalInfo.location}}
+        </p>
+      </div>
+    </div>
+
+    <div style="padding: 20px;">
+      <h2 style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">خلاصه</h2>
+      <p>{{personalInfo.summary}}</p>
+
+      <h2 style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">مهارت‌ها</h2>
+      <ul style="column-count: 2; margin: 0; padding-left: 20px;">
+        {{#each skills}}<li>{{name}} - {{level}}%</li>{{/each}}
+      </ul>
+
+      <h2 style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">سوابق شغلی</h2>
+      {{#each experience}}
+      <div style="margin-bottom: 10px;">
+        <strong>{{role}}</strong> در <strong>{{company}}</strong><br />
+        <bdi>به مدت : <small style="color: #777;">{{period}} {{duration}}</small></bdi>
+      </div>
+      {{/each}}
+
+      <h2 style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">پروژه‌ها</h2>
+      {{#each projects}}
+      <div style="margin-bottom: 10px;">
+        <strong>{{title}}</strong><br />
+        {{description}}<br />
+        <em>فناوری‌ها:</em> {{#each technologies}}<span>{{this}}{{#unless @last}}, {{/unless}}</span>{{/each}}
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</body>
+
+</html>

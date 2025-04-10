@@ -1,0 +1,189 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    html {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: center;
+    }
+
+    @page {
+      size: A4;
+      margin: 10mm;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .a4-container {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0;
+      background: white;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    @font-face {
+      font-family: 'IRANSansX';
+      font-style: normal;
+      font-weight: 400;
+      src: url('https://fonts.cdnfonts.com/s/61729/IRANSansXRegular.woff') format('woff');
+    }
+
+    @font-face {
+      font-family: 'IRANSansX';
+      font-style: normal;
+      font-weight: 100;
+      src: url('https://fonts.cdnfonts.com/s/61729/IRANSansXThin.woff') format('woff');
+    }
+
+    @font-face {
+      font-family: 'IRANSansX';
+      font-style: normal;
+      font-weight: 200;
+      src: url('https://fonts.cdnfonts.com/s/61729/IRANSansXUltraLight.woff') format('woff');
+    }
+
+    @font-face {
+      font-family: 'IRANSansX';
+      font-style: normal;
+      font-weight: 300;
+      src: url('https://fonts.cdnfonts.com/s/61729/IRANSansXLight.woff') format('woff');
+    }
+
+    @font-face {
+      font-family: 'IRANSansX';
+      font-style: normal;
+      font-weight: 500;
+      src: url('https://fonts.cdnfonts.com/s/61729/IRANSansXMedium.woff') format('woff');
+    }
+
+    @font-face {
+      font-family: 'IRANSansX';
+      font-style: normal;
+      font-weight: 600;
+      src: url('https://fonts.cdnfonts.com/s/61729/IRANSansXDemiBold.woff') format('woff');
+    }
+
+    @font-face {
+      font-family: 'IRANSansX';
+      font-style: normal;
+      font-weight: 700;
+      src: url('https://fonts.cdnfonts.com/s/61729/IRANSansXBold.woff') format('woff');
+    }
+
+    @font-face {
+      font-family: 'IRANSansX';
+      font-style: normal;
+      font-weight: 800;
+      src: url('https://fonts.cdnfonts.com/s/61729/IRANSansXExtraBold.woff') format('woff');
+    }
+
+    @font-face {
+      font-family: 'IRANSansX';
+      font-style: normal;
+      font-weight: 900;
+      src: url('https://fonts.cdnfonts.com/s/61729/IRANSansXBlack.woff') format('woff');
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="a4-container"
+    style="display: flex; font-family: 'IRANSansX'; border: 1px solid #ccc; box-shadow: 0 0 10px #eee; min-height: 297mm;" dir="rtl">
+    <!-- Sidebar -->
+    <div style="width: 40%; background: #c67051; color: #ffffff; padding: 20px; box-sizing: border-box;">
+      <div style="text-align: center;">
+        {{#if personalInfo.avatar}}
+        <img src="{{personalInfo.avatar}}" alt="Avatar"
+          style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; margin-bottom: 10px; border: 4px solid #fff;" />
+        {{else}}
+        <img src="https://via.placeholder.com/200?text=Avatar" alt="Avatar"
+          style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; margin-bottom: 10px; border: 4px solid #fff;" />
+        {{/if}}
+      </div>
+
+      <p style="font-size: 14px; margin: 5px 0;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#fff" viewBox="0 0 24 24"
+          style="vertical-align: middle; margin-right: 6px;">
+          <path
+            d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2a1.003 1.003 0 0 1 1.11-.21c1.21.49 2.53.76 3.88.76a1 1 0 0 1 1 1v3.5a1 1 0 0 1-1 1C10.63 22 2 13.37 2 2a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.35.26 2.67.76 3.88a1 1 0 0 1-.21 1.11l-2.43 2.43z" />
+        </svg>
+        {{personalInfo.phone}}
+      </p>
+      <p style="font-size: 14px; margin: 5px 0;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#fff" viewBox="0 0 24 24"
+          style="vertical-align: middle; margin-right: 6px;">
+          <path
+            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" />
+        </svg>
+        {{personalInfo.location}}
+      </p>
+      <p style="font-size: 14px; margin: 5px 0;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#fff" viewBox="0 0 24 24"
+          style="vertical-align: middle; margin-right: 6px;">
+          <path
+            d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z" />
+        </svg>
+        <span>{{personalInfo.email}}</span>
+      </p>
+
+      <h3 style="margin-top: 20px;">مهارت‌ها</h3>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        {{#each skills}}
+        <div>
+          <div style="display: flex; justify-content: space-between; font-size: 13px;">
+            <span>{{name}}</span>
+            <span>{{level}}%</span>
+          </div>
+          <div style="height: 6px; background: #c67051; border-radius: 4px; overflow: hidden;">
+            <div style="height: 100%; width: {{level}}%; background: #fff;"></div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div style="width: 70%; background: #fff; padding: 30px; box-sizing: border-box;">
+      <h1 style="margin: 0;">{{personalInfo.fullName}}</h1>
+      <h3 style="color: #555; margin-top: 5px;">{{personalInfo.jobTitle}}</h3>
+
+      <div style="background-color: #b87356; color: white; padding: 8px 12px;  margin: 15px 0;">
+        <h3 style="margin: 0;">خلاصه</h3>
+      </div>
+      <p>{{personalInfo.summary}}</p>
+
+      <div style="background-color: #b87356; color: white; padding: 8px 12px; margin: 15px 0;">
+        <h3 style="margin: 0;">تجربه کاری</h3>
+      </div>
+      {{#each experience}}
+      <div style="margin-bottom: 15px;">
+        <p style="margin: 0; font-weight: bold;">{{role}}, {{company}}</p>
+        <p style="margin: 0; font-size: 13px; color: #777;">{{period}} - {{duration}}</p>
+      </div>
+      {{/each}}
+
+      <div style="background-color: #b87356; color: white; padding: 8px 12px; margin: 15px 0;">
+        <h3 style="margin: 0;">پروژه‌ها</h3>
+      </div>
+      {{#each projects}}
+      <div style="margin-bottom: 15px;">
+        <p style="margin: 0; font-weight: bold;">{{title}}</p>
+        <p style="margin: 0;">{{description}}</p>
+        <p style="margin: 0; font-size: 13px;"><em>تکنولوژی‌ها:</em> {{#each technologies}}<span>{{this}}{{#unless @last}},
+            {{/unless}}</span>{{/each}}</p>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</body>
+
+</html>
