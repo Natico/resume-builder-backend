@@ -34,6 +34,7 @@ app.post('/generate', async (req, res) => {
 
   const browser = await puppeteer.launch({
     executablePath: process.env.CHROME_EXECUTABLE_PATH || undefined,
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
   });
   const page = await browser.newPage();
   await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
