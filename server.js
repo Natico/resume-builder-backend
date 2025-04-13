@@ -1,3 +1,4 @@
+require('dotenv').config();
 const puppeteer = require('puppeteer');
 const cors = require('cors');
 const fs = require('fs');
@@ -31,7 +32,9 @@ app.post('/generate', async (req, res) => {
   const template = handlebars.compile(htmlSource);
   const htmlContent = template(resumeData);
 
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    executablePath: process.env.CHROME_EXECUTABLE_PATH || undefined,
+  });
   const page = await browser.newPage();
   await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
   
